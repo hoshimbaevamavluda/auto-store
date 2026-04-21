@@ -7,5 +7,5 @@ class HomePage(BasePage):
         self.btn_login = self.page.get_by_text("Login or register")
 
     def click_btn_login(self):
-        self.click(self.btn_login)
+        self.btn_login.click()
 

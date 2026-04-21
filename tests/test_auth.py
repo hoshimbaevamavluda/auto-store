@@ -7,6 +7,7 @@ class TestCheck:
 
     def test_auth_001(self, page):
         hm_page = HomePage(page)
+        hm_page.open_page()
         hm_page.click_btn_login()
 
         login_page = LoginPage(page)

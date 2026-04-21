@@ -39,7 +39,7 @@ class RegisterPage(BasePage):
         self.field_city.fill(self.CITY)
 
     def click_region(self):
-        self.click(self.field_region)
+        self.field_region.click()
 
     def chose_region(self):
         self.field_region.hover()
