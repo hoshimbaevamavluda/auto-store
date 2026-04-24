@@ -1,7 +1,6 @@
 import pytest
+from faker import Faker
 from playwright.sync_api import sync_playwright
-
-from config.base import BASE_URL
 
 
 @pytest.fixture
@@ -12,3 +11,8 @@ def page():
         page.set_default_timeout(5000)
         yield page
         browser.close()
+
+
+@pytest.fixture
+def fake_data():
+    return Faker()

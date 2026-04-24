@@ -1,3 +1,5 @@
-USER_NAME = 'admin'
+USER_NAME = 'mava85'
 USERS_PASSWORD = 'admin2'
-EMAIL_ADDRESS = "admin@mail.ru"
+EMAIL_ADDRESS = "mava851@mail.ru"
+REGION_ID = "3162"
+COUNTRY_ID = "207"

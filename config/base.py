@@ -1,1 +1,5 @@
-BASE_URL = "https://www.automationteststore.com"
+BASE_URL = "https://automationteststore.com"
+LOGIN_URL = BASE_URL + "/index.php?rt=account/login"
+REGISTER_URL = BASE_URL + "/index.php?rt=account/create"
+SUCCESS_URL = BASE_URL + "/index.php?rt=account/success"
+ACCOUNT_INFO_URL = BASE_URL + "/index.php?rt=account/account"

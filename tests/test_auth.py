@@ -1,33 +1,46 @@
-from pages.home_page import HomePage
+from config.base import LOGIN_URL, SUCCESS_URL, ACCOUNT_INFO_URL
+from config.users import USER_NAME, USERS_PASSWORD
 from pages.login_page import LoginPage
 from pages.register_page import RegisterPage
 
 
 class TestCheck:
 
-    def test_auth_001(self, page):
-        hm_page = HomePage(page)
-        hm_page.open_page()
-        hm_page.click_btn_login()
+    def test_auth_001(self, page, fake_data):
+        """
+        Успешная регистрация нового пользователя
+        """
 
         login_page = LoginPage(page)
+        login_page.open_page(LOGIN_URL)
         login_page.click_btn_continue_to_signup()
 
         register_page = RegisterPage(page)
-        register_page.fill_first_name()
-        register_page.fill_last_name()
-        register_page.fill_email()
-        register_page.fill_address()
-        register_page.fill_city()
-        register_page.click_region()
-        register_page.chose_region()
+        register_page.fill_first_name(fake_data)
+        register_page.fill_last_name(fake_data)
+        register_page.fill_email(fake_data)
+        register_page.fill_address(fake_data)
+        register_page.fill_city(fake_data)
+        register_page.choice_country()
+        register_page.choice_region()
+        register_page.fill_zipcode(fake_data)
+        login = register_page.fill_loginname(fake_data)
+        print(login) #для проверки
+        assert register_page.get_login_value() == login
+        register_page.fill_password()
+        register_page.fill_password_confirm()
+        register_page.check_privacy_policy()
+        register_page.click_continue()
+        register_page.expect_to_have_url(SUCCESS_URL)
 
+    def test_auth_002(self, page):
+        """
+        Вход с валидными данными
+        """
 
-
-
-
-
-
-
-
-
+        login_page = LoginPage(page)
+        login_page.open_page(LOGIN_URL)
+        login_page.fill_login_name(USER_NAME)
+        login_page.fill_password(USERS_PASSWORD)
+        login_page.click_login_btn()
+        login_page.expect_to_have_url(ACCOUNT_INFO_URL)
