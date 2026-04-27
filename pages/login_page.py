@@ -24,5 +24,5 @@ class LoginPage(BasePage):
     def click_login_btn(self):
         self.btn_login.click()
 
-    def expect_to_have_error_messeg(self, text):
-        expect(self.error_messeg).to_contain_text(text)
+    def expect_to_have_error_messeg(self, error_msg):
+        expect(self.error_messeg).to_contain_text(error_msg)

@@ -3,3 +3,5 @@ LOGIN_URL = BASE_URL + "/index.php?rt=account/login"
 REGISTER_URL = BASE_URL + "/index.php?rt=account/create"
 SUCCESS_URL = BASE_URL + "/index.php?rt=account/success"
 ACCOUNT_INFO_URL = BASE_URL + "/index.php?rt=account/account"
+
+E_MSG_LOGIN_PASSWORD = "Error: Incorrect login or password provided."
