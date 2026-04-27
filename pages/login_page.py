@@ -1,3 +1,5 @@
+from playwright.sync_api import expect
+
 from pages.base_page import BasePage
 
 
@@ -8,6 +10,7 @@ class LoginPage(BasePage):
         self.field_login_name = self.page.locator("#loginFrm_loginname")
         self.field_password = self.page.locator("#loginFrm_password")
         self.btn_login = self.page.get_by_role("button", name="Login")
+        self.error_messeg = self.page.locator(".alert.alert-error.alert-danger")
 
     def click_btn_continue_to_signup(self):
         self.continue_to_signup_btn.click()
@@ -20,3 +23,6 @@ class LoginPage(BasePage):
 
     def click_login_btn(self):
         self.btn_login.click()
+
+    def expect_to_have_error_messeg(self, text):
+        expect(self.error_messeg).to_contain_text(text)

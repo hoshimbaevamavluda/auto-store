@@ -45,3 +45,16 @@ class TestCheck:
         login_page.fill_password(USERS_PASSWORD)
         login_page.click_login_btn()
         login_page.expect_to_have_url(ACCOUNT_INFO_URL)
+
+    def test_auth_003(self, page):
+        """
+        Вход с неверным паролем
+        """
+
+        login_page = LoginPage(page)
+        login_page.open_page(LOGIN_URL)
+        login_page.fill_login_name(USER_NAME)
+        login_page.fill_password("wrong_pass")
+        login_page.click_login_btn()
+        error_text = "Error: Incorrect login or password provided."
+        login_page.expect_to_have_error_messeg(error_text)

@@ -22,7 +22,6 @@ class RegisterPage(BasePage):
         self.btn_continue = self.page.get_by_role("button", name="Continue")
         self.privacy_policy = self.page.locator("#AccountFrm_agree")
 
-
     def fill_first_name(self, name):
         self.field_first_name.fill(name)
 
@@ -54,7 +53,6 @@ class RegisterPage(BasePage):
 
     def get_login_value(self):
         return self.field_login_name.input_value()
-
 
     def fill_password(self):
         self.field_password.fill(USERS_PASSWORD)
