@@ -2,11 +2,12 @@ from config.base import LOGIN_URL, SUCCESS_URL, ACCOUNT_INFO_URL
 from config.users import USER_NAME, USERS_PASSWORD
 from pages.login_page import LoginPage
 from pages.register_page import RegisterPage
+from faker import Faker
 
 
 class TestCheck:
 
-    def test_auth_001(self, page, fake_data):
+    def test_auth_001(self, page):
         """
         Успешная регистрация нового пользователя
         """
@@ -16,15 +17,15 @@ class TestCheck:
         login_page.click_btn_continue_to_signup()
 
         register_page = RegisterPage(page)
-        register_page.fill_first_name(fake_data)
-        register_page.fill_last_name(fake_data)
-        register_page.fill_email(fake_data)
-        register_page.fill_address(fake_data)
-        register_page.fill_city(fake_data)
+        register_page.fill_first_name(Faker().name())
+        register_page.fill_last_name(Faker().last_name())
+        register_page.fill_email(Faker().unique.email())
+        register_page.fill_address(Faker().address())
+        register_page.fill_city(Faker().city())
         register_page.choice_country()
         register_page.choice_region()
-        register_page.fill_zipcode(fake_data)
-        login = register_page.fill_loginname(fake_data)
+        register_page.fill_zipcode()
+        login = register_page.fill_login_name()
         print(login) #для проверки
         assert register_page.get_login_value() == login
         register_page.fill_password()

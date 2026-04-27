@@ -1,5 +1,6 @@
-from config.base import BASE_URL
-from config.users import USERS_PASSWORD, REGION_ID, COUNTRY_ID
+from faker import Faker
+
+from config.users import USERS_PASSWORD, REGION_ID, COUNTRY_ID, ZIP_CODE
 from pages.base_page import BasePage
 
 
@@ -15,27 +16,27 @@ class RegisterPage(BasePage):
         self.field_region = self.page.locator("#AccountFrm_zone_id")
         self.field_zipcode = self.page.locator("#AccountFrm_postcode")
         self.field_country = self.page.locator("#AccountFrm_country_id")
-        self.field_loginname = self.page.locator("#AccountFrm_loginname")
+        self.field_login_name = self.page.locator("#AccountFrm_loginname")
         self.field_password = self.page.locator("#AccountFrm_password")
         self.field_password_confirm = self.page.locator("#AccountFrm_confirm")
         self.btn_continue = self.page.get_by_role("button", name="Continue")
         self.privacy_policy = self.page.locator("#AccountFrm_agree")
 
 
-    def fill_first_name(self, fake_data):
-        self.field_first_name.fill(fake_data.name())
+    def fill_first_name(self, name):
+        self.field_first_name.fill(name)
 
-    def fill_last_name(self, fake_data):
-        self.field_last_name.fill(fake_data.last_name())
+    def fill_last_name(self, last_name):
+        self.field_last_name.fill(last_name)
 
-    def fill_email(self, fake_data):
-        self.field_email.fill(fake_data.email())
+    def fill_email(self, email):
+        self.field_email.fill(email)
 
-    def fill_address(self, fake_data):
-        self.field_address.fill(fake_data.address())
+    def fill_address(self, address):
+        self.field_address.fill(address)
 
-    def fill_city(self, fake_data):
-        self.field_city.fill(fake_data.city())
+    def fill_city(self, city):
+        self.field_city.fill(city)
 
     def choice_region(self):
         self.field_region.select_option(REGION_ID)
@@ -43,16 +44,16 @@ class RegisterPage(BasePage):
     def choice_country(self):
         self.field_country.select_option(COUNTRY_ID)
 
-    def fill_zipcode(self,fake_data):
-        self.field_zipcode.fill(fake_data.postcode())
+    def fill_zipcode(self):
+        self.field_zipcode.fill(ZIP_CODE)
 
-    def fill_loginname(self, fake_data):
-        login = fake_data.user_name()
-        self.field_loginname.fill(login)
+    def fill_login_name(self):
+        login = Faker().user_name()
+        self.field_login_name.fill(login)
         return login
 
     def get_login_value(self):
-        return self.field_loginname.input_value()
+        return self.field_login_name.input_value()
 
 
     def fill_password(self):

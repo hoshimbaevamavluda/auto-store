@@ -11,8 +11,3 @@ def page():
         page.set_default_timeout(5000)
         yield page
         browser.close()
-
-
-@pytest.fixture
-def fake_data():
-    return Faker()
