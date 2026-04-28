@@ -1,6 +1,4 @@
-from faker import Faker
-
-from config.users import USERS_PASSWORD, REGION_ID, COUNTRY_ID, ZIP_CODE
+from config.users import REGION_ID, COUNTRY_ID, ZIP_CODE
 from pages.base_page import BasePage
 
 
@@ -37,28 +35,26 @@ class RegisterPage(BasePage):
     def fill_city(self, city):
         self.field_city.fill(city)
 
-    def choice_region(self):
-        self.field_region.select_option(REGION_ID)
+    def choice_region(self, region: str = REGION_ID):
+        self.field_region.select_option(region)
 
-    def choice_country(self):
-        self.field_country.select_option(COUNTRY_ID)
+    def choice_country(self, country: str = COUNTRY_ID):
+        self.field_country.select_option(country)
 
-    def fill_zipcode(self):
-        self.field_zipcode.fill(ZIP_CODE)
+    def fill_zipcode(self, zip_code: str = ZIP_CODE):
+        self.field_zipcode.fill(zip_code)
 
-    def fill_login_name(self):
-        login = Faker().user_name()
+    def fill_login_name(self, login: str):
         self.field_login_name.fill(login)
-        return login
 
     def get_login_value(self):
         return self.field_login_name.input_value()
 
-    def fill_password(self):
-        self.field_password.fill(USERS_PASSWORD)
+    def fill_password(self, password: str):
+        self.field_password.fill(password)
 
-    def fill_password_confirm(self):
-        self.field_password_confirm.fill(USERS_PASSWORD)
+    def fill_password_confirm(self, password: str):
+        self.field_password_confirm.fill(password)
 
     def click_continue(self):
         self.btn_continue.click()
