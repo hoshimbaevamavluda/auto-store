@@ -1,0 +1,6 @@
+USER_NAME = 'mava85'
+USERS_PASSWORD = 'admin2'
+EMAIL_ADDRESS = "mava851@mail.ru"
+REGION_ID = "3162"
+COUNTRY_ID = "207"
+ZIP_CODE = "734000"
