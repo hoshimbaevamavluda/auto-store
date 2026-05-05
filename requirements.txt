@@ -1,0 +1,6 @@
+faker
+allure-python-commons
+pytest~=9.0.3
+playwright
+pytest~=9.0.3
+playwright
