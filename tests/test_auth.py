@@ -20,11 +20,6 @@ class TestCheck:
     @allure.sub_suite("Успешная регистрация")
     @allure.title("TC_AUTH_001 Успешная регистрация нового пользователя")
     def test_auth_001(self, page):
-        """
-        :param page:
-        :return:
-        """
-
         login_page = LoginPage(page)
         login_page.open_page(LOGIN_URL)
         login_page.click_btn_continue_to_signup()
@@ -53,18 +48,13 @@ class TestCheck:
     @allure.sub_suite("Успешная авторизация")
     @allure.title("TC_AUTH_002 Вход с валидными данными")
     def test_auth_002(self, page):
-
-        """
-        :param page:
-        :return:
-        """
-
         login_page = LoginPage(page)
         login_page.open_page(LOGIN_URL)
         login_page.fill_login_name(USER_NAME)
         login_page.fill_password(USERS_PASSWORD)
         login_page.click_login_btn()
         login_page.expect_to_have_url(ACCOUNT_INFO_URL)
+
 
     @allure.story("Негативные тесты")
     @allure.title("TC_AUTH_003-004 Вход с неверными данными")
@@ -80,17 +70,10 @@ class TestCheck:
         Тесты Авторизации:
         003 Вход с неверным паролем
         004 Вход с несуществующим логином
-
-        :param page:
-        :param login_name:
-        :param password:
-        :param error_msg:
-        :return:
         """
-
         login_page = LoginPage(page)
         login_page.open_page(LOGIN_URL)
         login_page.fill_login_name(login_name)
         login_page.fill_password(password)
         login_page.click_login_btn()
-        login_page.expect_to_have_error_messeg(error_msg)
+        login_page.expect_to_have_error_message(error_msg)
