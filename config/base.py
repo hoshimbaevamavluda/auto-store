@@ -5,3 +5,4 @@ SUCCESS_URL = BASE_URL + "/index.php?rt=account/success"
 ACCOUNT_INFO_URL = BASE_URL + "/index.php?rt=account/account"
 
 E_MSG_LOGIN_PASSWORD = "Error: Incorrect login or password provided."
+TXT_EMPTY_CART = "Your shopping cart is empty!"
