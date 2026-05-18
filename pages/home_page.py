@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import expect
 
 from pages.base_page import BasePage
@@ -23,18 +24,21 @@ class HomePage(BasePage):
         self.btn_login.click()
 
     def add_product_to_cart(self, index):
-        self.btn_add_to_cart.nth(index).click()
+        with allure.step(f"Добавление {index} товара в корзину"):
+            self.btn_add_to_cart.nth(index).click()
         product = (self.product_name.nth(index)).inner_text()
         print(f'Товар "{product}" добавлен в корзину')
 
     def check_added_to_cart(self, index):
-        expect(self.added_to_cart.nth(index)).to_be_visible()
+        with allure.step("Проверка добавленного товара"):
+            expect(self.added_to_cart.nth(index)).to_be_visible()
 
     def go_to_cart_in_header(self):
         self.cart_in_header.click()
 
     def go_to_cart_page(self):
-        self.added_to_cart.click()
+        with allure.step("Переход на страницу корзины"):
+            self.added_to_cart.click()
 
     def open_cart_from_menu(self):
         self.home_btn.hover()
